@@ -10,7 +10,7 @@ For the above usecase, I implemented a simple example demonstration of how to lo
 
 *Note: Vite uses the [dotenv](https://www.npmjs.com/package/dotenv) to load the environment variables and exposes those variables to the client code only if the variables are prefixed with [`VITE_`](https://vitejs.dev/guide/env-and-mode.html#env-files)*
 
-The `scripts` section of the `package.json` includes the `"dev"`, `"companyA"` and `"companyB"` like below
+The `scripts` section of the [`package.json`](https://github.com/srikanth-kandi/env-management/blob/main/package.json#L6) includes the `"dev"`, `"companyA"` and `"companyB"` like below
 
 ```json
 "scripts": {
@@ -20,17 +20,17 @@ The `scripts` section of the `package.json` includes the `"dev"`, `"companyA"` a
 }
 ```
 
-- `"dev"` - This script loads and execute the default environment variables mentioned in `.env.development` like default organization is `companyA`.
-- `"companyA"` - This script loads the `.env.development` and override the `VITE_COMPANY_A` environment variable with the `.env.development.companyA`'s variable.
-- `"companyB"` - This script loads the `.env.development` and override the `VITE_COMPANY_B` environment variable with the `.env.development.companyB`'s variable.
+- `"dev"` - This script loads and execute the default environment variables mentioned in [`.env.development`](https://github.com/srikanth-kandi/env-management/blob/main/.env.development) like default organization is `companyA`.
+- `"companyA"` - This script loads the [`.env.development`](https://github.com/srikanth-kandi/env-management/blob/main/.env.development) and override the `VITE_COMPANY_A` environment variable with the [`.env.development.companyA`](https://github.com/srikanth-kandi/env-management/blob/main/.env.development.companyA)'s variable.
+- `"companyB"` - This script loads the [`.env.development`](https://github.com/srikanth-kandi/env-management/blob/main/.env.development) and override the `VITE_COMPANY_B` environment variable with the [`.env.development.companyB`](https://github.com/srikanth-kandi/env-management/blob/main/.env.development.companyB)'s variable.
 
-The `"companyA"` and `"companyB"` scripts uses the [cross-env](https://www.npmjs.com/package/cross-env) npm package, to set the `VITE_ORGANIZATION` environment variable dynamically during run-time. So it overrides the default `VITE_ORGANIZATION` specified in the `.env.development` file.
+The `"companyA"` and `"companyB"` scripts uses the [cross-env](https://www.npmjs.com/package/cross-env) npm package, to set the `VITE_ORGANIZATION` environment variable dynamically during run-time. So it overrides the default `VITE_ORGANIZATION` specified in the [`.env.development`](https://github.com/srikanth-kandi/env-management/blob/main/.env.development) file.
 
 The next big task is to load the seperate `.env` file of the `companyA` or `companyB` based on the `VITE_ORGANIZATION` environment variable.
 
 So to load these different environment files we use `resolve()` method from `path` and `dotenv` to load the currently set `VITE_ORGANIZATION`.
 
-**vite.config.js**
+[**vite.config.js**](https://github.com/srikanth-kandi/env-management/blob/main/vite.config.js)
 ```js
 import { defineConfig } from 'vite'
 import dotenv from 'dotenv'
@@ -48,7 +48,7 @@ export default defineConfig(() => {
 })
 ```
 
-So to change any configuration of the `vite` project we have to modify that in the *vite.config.js*. Let us see the explanation of the above code.
+So to change any configuration of the `vite` project we have to modify that in the [*vite.config.js*](https://github.com/srikanth-kandi/env-management/blob/main/vite.config.js). Let us see the explanation of the above code.
 
 The line 1, imports the `defineConfig` from the `vite` which is used to override/modify the default configuration of a vite project. And the 2nd, 3rd lines import the required modules for loading the seperate `.env` file.
 
